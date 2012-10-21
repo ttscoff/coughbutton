@@ -47,10 +47,11 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 					$("body,html").css({backgroundColor:"red"});
 					return false;
 				}).bind("release", function(ev) {
-					console.log(ev);
+					console.log(ev.type, ev.gesture);
 					switch (ev.gesture) {
 						case "tap":
 							tapped = setTimeout(function(){
+								console.log("timeout triggered");
 								$.get("index.php?func=mutemymic");
 								if (state === "muted") {
 									$("body,html").css({background:"#478b35"});
@@ -60,14 +61,19 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 									state = "muted";
 								}
 								return false;
-							}, 300);
+							}, 400);
 							break;
 						case "double_tap":
-							clearTimeout(tapped);
-							$.get("index.php?func=mutemymic");
-							state = state === "muted" ? "unmuted" : "muted";
+							window.clearTimeout(tapped);
+							if (state === "muted") {
+								$("body,html").css({background:"#478b35"});
+								state = "unmuted";
+							} else {
+								$("body,html").css({backgroundColor:"red"});
+								state = "muted";
+							}
 						case "hold":
-							clearTimeout(tapped);
+							window.clearTimeout(tapped);
 							$.get("index.php?func=mutemymic");
 							$("body,html").css({background:"#478b35"});
 							state = "unmuted";
