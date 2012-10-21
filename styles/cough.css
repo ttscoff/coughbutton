@@ -1,0 +1,24 @@
+body {
+	overflow-x: hidden;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	background-color: #478b35;
+}
+.btn2 {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 200px 0 0;
+	width: 100%;
+	height:2024px;
+	background-color: transparent;
+	color: #464646;
+	color:rgba(250,250,250,0);
+	text-align: center;
+	text-decoration: none;
+	text-shadow: -1px 0px 0px rgba(0,0,0,.2), 0 -1px 4px rgba(55,55,55,.05), 1px 1px 1px rgba(255,255,255,.15);
+	font-weight: 700;
+	font-size: 32px;
+	font-family: "Helvetica";
+	line-height: 1.25;
+}
