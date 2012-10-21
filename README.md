@@ -1,6 +1,7 @@
 # CoughButton
 
-A little ditty by Brett Terpstra
+A little ditty by Brett Terpstra  
+<http://ttscoff.github.com/coughbutton/>
 
 ## Purpose
 
@@ -17,6 +18,8 @@ CoughButton uses jQuery and the [Hammer.js][2] jQuery plugin to provide a tap-an
 You need a local web server running PHP and a way to load it on your iPhone. This can be done by turning on the apache web server with PHP enabled and setting up a virtual host. If you don't know how to do that, I recommend using [MAMP][3].
 
 [3]: http://www.mamp.info/en/index.html
+
+Unzip the download into a folder in "Sites" in your home directory. Point your virtual host to it and you're ready to go.
 
 You'll also need [MuteMyMic][1] installed and running.
 
