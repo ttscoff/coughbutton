@@ -31,7 +31,7 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 
 	<script>
 		(function($){
-			setTimeout(function(){window.scrollTo(0,27);},500);
+			// setTimeout(function(){window.scrollTo(0,27);},500);
 			$("#cough").hammer({
 					prevent_default: true,
 					hold_timeout: 0
