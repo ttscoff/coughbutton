@@ -1,5 +1,5 @@
 <?php
-// Version 1.0
+// Version 1.1
 ini_set('display_errors',1);
 error_reporting(E_ALL|E_STRICT);
 if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
@@ -31,20 +31,52 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 	<script type="text/javascript" src="scripts/jquery.hammer.js"></script>
 
 	<script>
+		var tapped, state = 'unmuted';
 		(function($){
 			// setTimeout(function(){window.scrollTo(0,27);},500);
 			$("#cough").hammer({
-					prevent_default: true,
-					hold_timeout: 0
+					prevent_default    : true,
+					hold_timeout       : 200
 				}).bind("hold", function(ev) {
-					$.get("index.php?func=mutemymic");
+					clearTimeout(tapped);
+					if (state !== "muted") {
+						$.get("index.php?func=mutemymic");
+						state = "muted"
+					}
 					$("body,html").css({backgroundColor:"red"});
 					return false;
 				}).bind("release", function(ev) {
-					$.get("index.php?func=mutemymic");
-					$("body,html").css({background:"#478b35"});
+					switch (ev.gesture) {
+						case "tap":
+							tapped = setTimeout(function(){
+								$.get("index.php?func=mutemymic");
+								if (state === "muted") {
+									$("body,html").css({background:"#478b35"});
+									state = "unmuted";
+								} else {
+									$("body,html").css({backgroundColor:"red"});
+									state = "muted";
+								}
+								return false;
+							}, 400);
+							break;
+						case "double_tap":
+							window.clearTimeout(tapped);
+							if (state === "muted") {
+								$("body,html").css({background:"#478b35"});
+								state = "unmuted";
+							} else {
+								$("body,html").css({backgroundColor:"red"});
+								state = "muted";
+							}
+						case "hold":
+							window.clearTimeout(tapped);
+							$.get("index.php?func=mutemymic");
+							$("body,html").css({background:"#478b35"});
+							state = "unmuted";
+					}
 					return false;
-				});
+				}).bind("doubletap",function(ev) { $.get("index.php?func=mutemymic"); });
 		})(jQuery);
 	</script>
 </body>
