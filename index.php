@@ -1,5 +1,5 @@
 <?php
-// Version 1.0
+// Version 1.1
 ini_set('display_errors',1);
 error_reporting(E_ALL|E_STRICT);
 if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
@@ -38,7 +38,6 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 					prevent_default    : true,
 					hold_timeout       : 200
 				}).bind("hold", function(ev) {
-					console.log(ev);
 					clearTimeout(tapped);
 					if (state !== "muted") {
 						$.get("index.php?func=mutemymic");
@@ -47,11 +46,9 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 					$("body,html").css({backgroundColor:"red"});
 					return false;
 				}).bind("release", function(ev) {
-					console.log(ev.type, ev.gesture);
 					switch (ev.gesture) {
 						case "tap":
 							tapped = setTimeout(function(){
-								console.log("timeout triggered");
 								$.get("index.php?func=mutemymic");
 								if (state === "muted") {
 									$("body,html").css({background:"#478b35"});
