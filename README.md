@@ -23,8 +23,14 @@ Unzip the download into a folder in "Sites" in your home directory. Point your v
 
 You'll also need [MuteMyMic][1] installed and running.
 
+Open your virtual host address/port in Mobile Safari on your iPhone. Use the send button at the bottom of the mobile Safari window to "Add to Homescreen." Leave Safari and launch the new icon it creates.
+
 ## Usage
 
-Open your virtual host address/port on your iPhone. Use the send button at the bottom of the mobile Safari window to "Add to Homescreen." Leave Safari and launch the new icon it creates. Make sure that MuteMyMic is running and set to unmuted. Tap and hold your screen and you should see the MuteMyMic icon in your menu bar turn red, returning to black when you release.
+Make sure that MuteMyMic is running and set to unmuted. Tap and hold your screen and you should see the MuteMyMic icon in your menu bar turn red, returning to black when you release.
+
+To toggle, just tap lightly once. This will hard switch between muted and unmuted.
+
+If something goes wrong and the sync between the iPhone screen color and the actual state of MuteMyMic gets off, you can double tap the screen to switch MuteMyMic without changing the state of CoughButton.
 
 If you're barefoot and don't mind touching your iPhone with your feet, it makes a decent foot pedal, too.
