@@ -4,11 +4,13 @@ A little ditty by Brett Terpstra
 
 ## Purpose
 
-CoughButton is a small PHP script and iPhone-friendly web app that does one simple thing: press opt-F5 on your Mac to toggle MuteMyMic[1].
+CoughButton is a small PHP script and iPhone-friendly web app that does one simple thing: press opt-F5 on your Mac to toggle [MuteMyMic][1].
 
 [1]: https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12
 
 CoughButton uses jQuery and the [Hammer.js][2] jQuery plugin to provide a tap-and-hold feature so that your iPhone functions like a real cough button. Press and hold the screen and your mic will be muted, when you let up it will unmute.
+
+[2]: http://eightmedia.github.com/hammer.js/
 
 ## Installation
 
