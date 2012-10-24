@@ -1,5 +1,5 @@
 <?php
-// Version 1.1
+// Version 1.2
 if (isset($_REQUEST['func'])) {
 	$ret = '';
 	if ($_REQUEST['func'] == 'mutemymic')
