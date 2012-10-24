@@ -40,14 +40,13 @@ if (isset($_REQUEST['func'])) {
 	<script type="text/javascript" src="scripts/jquery.hammer.js"></script>
 
 	<script>
-		var tapped, state = 'unmuted';
+		var state = 'unmuted';
 		(function($){
 			// setTimeout(function(){window.scrollTo(0,27);},500);
 			$("#cough").hammer({
 					prevent_default    : true,
 					hold_timeout       : 200
 				}).bind("hold", function(ev) {
-					clearTimeout(tapped);
 					if (state !== "muted") {
 						$.get("index.php?func=skypemute");
 						state = "muted"
@@ -57,35 +56,23 @@ if (isset($_REQUEST['func'])) {
 				}).bind("release", function(ev) {
 					switch (ev.gesture) {
 						case "tap":
-							tapped = setTimeout(function(){
-								$.get("index.php?func=skypeunmute");
-								if (state === "muted") {
-									$("body,html").css({background:"#478b35"});
-									state = "unmuted";
-								} else {
-									$("body,html").css({backgroundColor:"red"});
-									state = "muted";
-								}
-								return false;
-							}, 400);
-							break;
-						case "double_tap":
-							window.clearTimeout(tapped);
 							if (state === "muted") {
+								$.get("index.php?func=skypeunmute");
 								$("body,html").css({background:"#478b35"});
 								state = "unmuted";
 							} else {
+								$.get("index.php?func=skypemute");
 								$("body,html").css({backgroundColor:"red"});
 								state = "muted";
 							}
+							return false;
 						case "hold":
-							window.clearTimeout(tapped);
 							$.get("index.php?func=skypeunmute");
 							$("body,html").css({background:"#478b35"});
 							state = "unmuted";
 					}
 					return false;
-				}).bind("doubletap",function(ev) { $.get("index.php?func=mutemymic"); });
+				});
 		})(jQuery);
 	</script>
 </body>
