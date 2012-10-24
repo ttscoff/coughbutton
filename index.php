@@ -1,14 +1,23 @@
 <?php
 // Version 1.1
-ini_set('display_errors',1);
-error_reporting(E_ALL|E_STRICT);
-if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
-{
-	// Triggers opt-F5 to toggle MuteMyMic
-	// https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12&partnerId=30&siteID=vRL5rYo4h5A
-	$ret = exec("osascript -e 'tell application \"System Events\" to key code 96 using option down'");
+if (isset($_REQUEST['func'])) {
+	$ret = '';
+	if ($_REQUEST['func'] == 'mutemymic')
+	{
+		// Triggers opt-F5 to toggle MuteMyMic
+		// https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12&partnerId=30&siteID=vRL5rYo4h5A
+		$ret = exec("osascript -e 'tell application \"System Events\" to key code 96 using option down'");
+	} elseif ($_REQUEST['func'] == 'skypetoggle') {
+		$mute = exec("osascript -e 'tell application \"Skype\" to send command \"GET MUTE\" script name \"CoughButton\"'");
+		$toggle = (preg_match('/OFF$/',$mute)) ? " ON" : " OFF";
+		$ret = exec("osascript -e 'tell application \"Skype\" to send command \"MUTE $toggle\" script name \"CoughButton\"'");
+	} elseif ($_REQUEST['func'] == 'skypemute') {
+		$ret = exec("osascript -e 'tell application \"Skype\" to send command \"MUTE ON\" script name \"CoughButton\"'");
+	} elseif ($_REQUEST['func'] == 'skypeunmute') {
+		$ret = exec("osascript -e 'tell application \"Skype\" to send command \"MUTE OFF\" script name \"CoughButton\"'");
+	}
 	die($ret);
-} ?>
+}?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +49,7 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 				}).bind("hold", function(ev) {
 					clearTimeout(tapped);
 					if (state !== "muted") {
-						$.get("index.php?func=mutemymic");
+						$.get("index.php?func=skypemute");
 						state = "muted"
 					}
 					$("body,html").css({backgroundColor:"red"});
@@ -49,7 +58,7 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 					switch (ev.gesture) {
 						case "tap":
 							tapped = setTimeout(function(){
-								$.get("index.php?func=mutemymic");
+								$.get("index.php?func=skypeunmute");
 								if (state === "muted") {
 									$("body,html").css({background:"#478b35"});
 									state = "unmuted";
@@ -71,7 +80,7 @@ if (isset($_REQUEST['func']) && $_REQUEST['func'] == 'mutemymic')
 							}
 						case "hold":
 							window.clearTimeout(tapped);
-							$.get("index.php?func=mutemymic");
+							$.get("index.php?func=skypeunmute");
 							$("body,html").css({background:"#478b35"});
 							state = "unmuted";
 					}
