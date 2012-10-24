@@ -33,7 +33,11 @@
       <section id="main_content" class="inner">
         <h2>Purpose</h2>
 
-<p>CoughButton is a small PHP script and iPhone-friendly web app that does one simple thing: press opt-F5 on your Mac to toggle <a href="https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12">MuteMyMic</a>.</p>
+<p>CoughButton is a small PHP script and iPhone-friendly web app that does one simple thing: mute and unmute Skype with a press-and-hold and tap-to-toggle interface.</p>
+
+<blockquote>
+<p>CoughButton used to press opt-F5 on your Mac to toggle <a href="https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12">MuteMyMic</a>, but toggling without being able to poll for state is just too unreliable, plus it was really only Skype I needed to mute.</p>
+</blockquote>
 
 <p>CoughButton uses jQuery and the <a href="http://eightmedia.github.com/hammer.js/">Hammer.js</a> jQuery plugin to provide a tap-and-hold feature so that your iPhone functions like a real cough button. Press and hold the screen and your mic will be muted, when you let up it will unmute.</p>
 
@@ -43,17 +47,13 @@
 
 <p>Unzip the download into a folder in "Sites" in your home directory. Point your virtual host to it and you're ready to go.</p>
 
-<p>You'll also need <a href="https://itunes.apple.com/pl/app/mutemymic/id456362093?mt=12">MuteMyMic</a> installed and running.</p>
-
 <p>Open your virtual host address/port in Mobile Safari on your iPhone. Use the send button at the bottom of the mobile Safari window to "Add to Homescreen." Leave Safari and launch the new icon it creates.</p>
 
 <h2>Usage</h2>
 
-<p>Make sure that MuteMyMic is running and set to unmuted. Tap and hold your screen and you should see the MuteMyMic icon in your menu bar turn red, returning to black when you release.</p>
+<p>Skype can only mute the mic while a call is active. Once you have a call started, tap and hold your iPhone screen and you should see the Skype notification that the mic is muted, unmuting when you release.</p>
 
 <p>To toggle, just tap lightly once. This will hard switch between muted and unmuted.</p>
-
-<p>If something goes wrong and the sync between the iPhone screen color and the actual state of MuteMyMic gets off, you can double tap the screen to switch MuteMyMic without changing the state of CoughButton.</p>
 
 <p>If you're barefoot and don't mind touching your iPhone with your feet, it makes a decent foot pedal, too.</p>
       </section>
